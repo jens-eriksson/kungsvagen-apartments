@@ -1,0 +1,13 @@
+.google {
+    background: #c32f10; 
+    color: white;
+    min-width: 160px;
+    margin: 10px;
+}
+
+.facebook {
+    background: #3b5998; 
+    color: white;
+    min-width: 160px;
+    margin: 10px;
+}

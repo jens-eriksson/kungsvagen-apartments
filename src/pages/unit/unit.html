@@ -1,0 +1,92 @@
+<div class="container" *ngIf="unit">
+  <app-header></app-header>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="card">
+        <div class="card-body text-center">
+          <h1 *ngIf="unit.sold" class="sold">SÅLD</h1>
+
+          <div id="carousel-images" class="carousel" data-interval="false" style="margin: -15px;">
+            <div class="carousel-inner">
+              <div class="carousel-item" *ngFor="let img of unit.images; let isFirst = first" [class.active]="isFirst">
+                <img class="d-block w-100" src="{{'../../assets/img/' + img.name }}" alt="" data-toggle="modal"
+                  [attr.data-target]="'#modal-images-' + unit.key">
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-4" style="padding: 5px;">
+            <a class="btn btn-outline-secondary btn-round" href="#carousel-images" role="button" data-slide="prev"
+              style="margin-right: 5px;"><span class="fa fa-chevron-left"></span></a>
+            <a class="btn btn-outline-secondary btn-round" href="#carousel-images" role="button" data-slide="next"><span
+                class="fa fa-chevron-right"></span></a>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="card">
+        <div class="card-body">
+          <div *ngFor='let featureCategory of unit.featureCategories'>
+            <h3 class="phosphate mt-3">{{featureCategory.name}}</h3>
+            <hr>
+            <div class="row">
+              <div class="col-md-4" *ngFor='let feature of featureCategory.features'>
+                <h5>{{ feature.name }}</h5>
+                <p>{{ feature.value }}</p>
+              </div>
+            </div>
+            <br>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-md-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title phosphate mt-2">Faktaruta</h5>
+          <hr>
+          <table class="table table-borderless table-sm">
+            <tr>
+              <th>Lägenhet</th>
+              <td>{{ unit.name }}</td>
+            </tr>
+            <tr>
+              <th>Pris</th>
+              <td>{{ unit.price | currency:'SEK':'':'1.0-0' }} kr</td>
+            </tr>
+            <tr>
+              <th>Avgift</th>
+              <td>{{ unit.rent | currency:'SEK':'':'1.0-0' }} kr/mån</td>
+            </tr>
+            <tr>
+              <th>Storlek</th>
+              <td>{{ unit.size }} kvm</td>
+            </tr>
+            <tr>
+              <th>Antal rum</th>
+              <td>{{ unit.rooms }}</td>
+            </tr>
+
+          </table>
+        </div>
+      </div>
+      <div class="card" *ngIf="salesAgent">
+        <h5 class="card-body phosphate mt-2">Kontaktperson</h5>
+        <img class="card-img-top" src="{{ '../assets/img/' + salesAgent.photo.name }}" alt="Kontaktperson">
+
+        <div class="card-body" align="center">
+
+          <p class="card-text"><b>{{ salesAgent.name }}</b></p>
+          <p class="card-text">{{ salesAgent.phone }}</p>
+          <p class="card-text"><a href="{{ 'mailto:' + salesAgent.email }}">{{ salesAgent.email | truncate}}</a></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<app-image-modal *ngIf="unit" [images]="unit.images" [id]="'modal-images-' + unit.key" [title]="">
+</app-image-modal>

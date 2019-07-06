@@ -1,0 +1,42 @@
+.photo {
+    border-radius: 50%;
+    width: 30px;
+}
+
+.menu-icon {
+    position: fixed;
+    top: 5px;
+    right: 5px;
+    z-index: 1000;
+    
+}
+
+.background {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+}
+
+.sidebar {
+    background-color: black;
+    position: fixed;
+    top: 0px;
+    bottom: 0px;
+    width: 17rem;
+    z-index: 999;
+    right: 0px;
+}
+
+.nav {
+    margin-top: 60px;
+}
+.nav-link {
+    color: lightgray;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.nav-link:hover {
+    color: black;
+}

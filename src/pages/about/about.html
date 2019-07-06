@@ -1,0 +1,17 @@
+<div class="container" style="min-height: 100%;">
+  <app-header></app-header>
+  <div class="row">
+    <div class="col" *ngFor="let contact of contacts">
+      <div class="card mx-auto mt-5" *ngIf="contact">
+        <img class="card-img-top" src="{{ '../assets/img/' + contact.photo.name }}" alt="Kontaktperson">
+
+        <div class="card-body" align="center">
+
+          <p class="card-text"><b>{{ contact.name }}</b></p>
+          <p class="card-text">{{ contact.phone }}</p>
+          <p class="card-text"><a href="{{ 'mailto:' + contact.email }}">{{ contact.email | truncate}}</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<div class="container" *ngIf="project">
+  <app-header></app-header>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="card">
+        <div class="card-body">
+          <div id="carousel-images" class="carousel" data-interval="false" style="margin: -15px;">
+            <div class="carousel-inner">
+              <div class="carousel-item" *ngFor="let img of project.images; let isFirst = first"
+                [class.active]="isFirst">
+                <img class="d-block w-100" src="{{'../../assets/img/' + img.name}}" data-toggle="modal"
+                  [attr.data-target]="'#modal-images-' + project.key" />
+              </div>
+            </div>
+          </div>
+          <div class="text-center mt-4" style="padding: 5px;">
+            <a class="btn btn-outline-secondary btn-round" href="#carousel-images" role="button" data-slide="prev"
+              style="margin-right: 5px;"><span class="fa fa-chevron-left"></span></a>
+            <a class="btn btn-outline-secondary btn-round" href="#carousel-images" role="button" data-slide="next"><span
+                class="fa fa-chevron-right"></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card max-height">
+        <div class="card-body">
+          <h2 class="card-title phosphate">Faktaruta</h2>
+          <hr>
+          <p class="card-text" *ngFor="let info of project.summary">
+            <b>{{ info.name }}</b>
+            <br>{{ info.value }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h1 *ngIf="units" class="phosphate mt-2">Till salu</h1>
+  <div class="row">
+    <div class="col" *ngFor="let unit of units">
+      <div class="card max-height text-center unit">
+        <h1 *ngIf="unit.sold" class="sold-text mt-3">SÅLD</h1>
+        <div [ngClass]="{'sold' : unit.sold}">
+          <img src="{{ '../../assets/img/' + unit.images[0].name }}" [routerLink]="['/enhet', unit.key]"
+            class="card-img-top" style="border-bottom: solid 1px gainsboro">
+          <div class="card-body">
+            <a href="#" [routerLink]="['/enhet', unit.key]">
+              <h3 class="card-title" [innerHTML]="unit.name"></h3>
+            </a>
+            <h5 class="card-subtitle mb-2 text-muted">{{ unit.rooms }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ unit.size }} kvm</h6>
+            <hr>
+            <p class="card-text">
+              <b>Pris</b>
+              <br>{{ unit.price | currency:'SEK':'':'1.0-0'}} kr
+            </p>
+            <p class="card-text">
+              <b>Avgift</b>
+              <br>{{ unit.rent | currency:'SEK':'':'1.0-0' }} kr/mån
+            </p>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1864.3902912167734!2d15.090317316484995!3d65.81549798437716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNjXCsDQ4JzU1LjgiTiAxNcKwMDUnMzMuMCJF!5e1!3m2!1sen!2sse!4v1562079770094!5m2!1sen!2sse"
+          height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-image-modal [images]="project.images" [id]="'modal-images-' + project.key" [title]="" *ngIf="project">
+</app-image-modal>
