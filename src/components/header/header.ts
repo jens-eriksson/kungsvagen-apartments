@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
     this.authProvider.signOut().then(() => this.router.navigate(["sign-in"]));
   }
 
-  navigate(path, id) {
+  navigate(path, id?) {
     if(id) {
       this.router.navigate([path, id]);
     }
