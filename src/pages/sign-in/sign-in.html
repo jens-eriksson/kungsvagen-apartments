@@ -8,28 +8,29 @@
           <br><br><br>
         </div>
       </div>
-      <div class="form-group row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-          <input type="email" class="form-control" placeholder="Email" [(ngModel)]="email">
+      <form>
+        <div class="form-group row">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+            <input type="email" class="form-control" placeholder="Email" [(ngModel)]="email" name="email">
+          </div>
+          <div class="col-md-2"></div>
         </div>
-        <div class="col-md-2"></div>
-      </div>
-      <div class="form-group row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-          <input type="password" class="form-control" (value)="pwd" placeholder="Password" [(ngModel)]="pwd">
+        <div class="form-group row">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+            <input type="password" class="form-control" (value)="pwd" placeholder="Password" [(ngModel)]="pwd" name="pwd">
+          </div>
+          <div class="col-md-2"></div>
         </div>
-        <div class="col-md-2"></div>
-      </div>
-      <div class="form-group row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-          <button class="form-control btn btn-primary" (click)="signIn()">Logga in</button>
+        <div class="form-group row">
+          <div class="col-md-2"></div>
+          <div class="col-md-8">
+            <button type="submit" class="form-control btn btn-primary" (click)="signIn()">Logga in</button>
+          </div>
+          <div class="col-md-2"></div>
         </div>
-        <div class="col-md-2"></div>
-      </div>
-
+      </form>
       <div class="row" *ngIf="message">
         <div class="col text-center">
           <br>
