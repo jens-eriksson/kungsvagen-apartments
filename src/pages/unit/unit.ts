@@ -21,7 +21,9 @@ export class UnitPage implements OnInit {
     private router: Router
   ) {
     this.router.events.subscribe(event => {
-      if(event instanceof NavigationEnd) {
+      if(event instanceof NavigationEnd && event.url.startsWith("/enhet")) {
+        console.log('unit router event');
+        console.log(event);
         this.reload(this.route.snapshot.paramMap.get("id"));
       }
   });

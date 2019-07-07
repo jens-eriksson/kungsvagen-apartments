@@ -44,13 +44,4 @@ export class AuthProvider {
 
         return false;
     }
-
-    isAnonymous() {
-        if(this.currentUser && this.currentUser.name == "anonymous") {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
 }

@@ -27,7 +27,7 @@
       <div class="card">
         <div class="card-body">
           <div *ngFor='let featureCategory of unit.featureCategories'>
-            <h3 class="phosphate mt-3">{{featureCategory.name}}</h3>
+            <h2 class="phosphate mt-3">{{featureCategory.name}}</h2>
             <hr>
             <div class="row">
               <div class="col-md-4" *ngFor='let feature of featureCategory.features'>
@@ -44,7 +44,7 @@
     <div class="col-md-3">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title phosphate mt-2">Faktaruta</h5>
+          <h2 class="card-title phosphate mt-2">Faktaruta</h2>
           <hr>
           <table class="table table-borderless table-sm">
             <tr>
@@ -72,7 +72,7 @@
         </div>
       </div>
       <div class="card" *ngIf="salesAgent">
-        <h5 class="card-body phosphate mt-2">Kontaktperson</h5>
+        <h2 class="card-body phosphate mt-2">Kontakt</h2>
         <img class="card-img-top" src="{{ '../assets/img/' + salesAgent.photo.name }}" alt="Kontaktperson">
 
         <div class="card-body" align="center">

@@ -8,15 +8,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.css']
 })
 export class HeaderComponent implements OnInit {
-
-  isAnonymous: Boolean;
   menuHidden: Boolean = true;
 
   constructor(
     public authProvider: AuthProvider,
     private router: Router
   ) { 
-    this.isAnonymous = this.authProvider.isAnonymous();
   }
 
   ngOnInit() {

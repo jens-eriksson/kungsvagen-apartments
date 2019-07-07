@@ -11,7 +11,6 @@ import { UnitPage } from '../pages/unit/unit';
 import { AboutPage } from '../pages/about/about';
 import { SignInPage } from './../pages/sign-in/sign-in';
 
-import { FooterComponent } from '../components/footer/footer';
 import { HeaderComponent } from './../components/header/header';
 import { ImageModalComponent } from './../components/image-modal/image-modal';
 import { AccessGuardService } from './../core/auth-guard';
@@ -35,7 +34,6 @@ import { TokenInterceptor } from '../core/token-interceptor';
     UnitPage,
     SignInPage,
     HeaderComponent,
-    FooterComponent,
     ImageModalComponent,
     TruncatePipe
   ],
@@ -51,7 +49,7 @@ import { TokenInterceptor } from '../core/token-interceptor';
       { path: 'enhet/:id', component: UnitPage, canActivate: [AccessGuardService]},
       { path: '', redirectTo: 'home', pathMatch: 'full'},
       { path: '**', redirectTo: 'home', pathMatch: 'full'}
-    ], {onSameUrlNavigation: 'reload'})
+    ])
   ],
   providers: [
     ProjectProvider, 
