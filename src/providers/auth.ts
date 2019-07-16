@@ -24,8 +24,6 @@ export class AuthProvider {
             if(this.currentUser) {
                 this.currentUser["jwt"] = null;
             }
-            
-            console.error(err);
         }
         
         localStorage.setItem("currentUser", JSON.stringify(this.currentUser));
