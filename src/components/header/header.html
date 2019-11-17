@@ -1,34 +1,36 @@
-
-  <div class="background d-none d-md-block">
-    <img src="../../assets/img/background2.jpg" class="img-fluid" />
-  </div>
-  <div class="container">
-    <div class="row mt-2 mb-3">
-      <div class="col">
-        <img src="../../assets/img/header-logo.png" class="img-fluid" style="cursor: pointer; min-width: 200px; max-width: 90%;" (click)="navigate('/home')">
-      </div>
+<div class="background d-none d-md-block">
+  <img src="../../assets/img/background2.jpg" class="img-fluid" />
+</div>
+<div class="container">
+  <div class="row mt-2 mb-3">
+    <div class="col">
+      <img src="../../assets/img/header-logo.png" class="img-fluid"
+        style="cursor: pointer; min-width: 200px; max-width: 90%;" (click)="navigate('/home')">
     </div>
   </div>
-  <button class="btn btn-lg menu-icon" [ngClass]="{'btn-secondary':!menuHidden}" (click)="toggleMenu()">
-      <span class="fas fa-bars"></span>
-  </button>
-  
-  <div class="sidebar" [ngClass]="{'d-none':menuHidden}">
-      <nav class="nav flex-column">
-          <div class="dropdown-divider mx-2"></div>
-          <div class="nav-link dropdown-item" (click)="navigate('/home')">Till salu</div>
-          <div class="nav-link dropdown-item ml-2" (click)="navigate('/enhet', 'KVA1-1')">KVA-1:1</div>
-          <div class="nav-link dropdown-item ml-2" (click)="navigate('/enhet', 'KVA1-2')">KVA-1:2</div>
-          <div class="nav-link dropdown-item ml-2" (click)="navigate('/enhet', 'KVA1-3')">KVA-1:3</div>
-          <div class="nav-link dropdown-item ml-2" (click)="navigate('/enhet', 'KVA2-1')">KVA-2:1</div>
-          <div class="nav-link dropdown-item ml-2" (click)="navigate('/enhet', 'KVA2-2')">KVA-2:2</div>
-          <div class="nav-link dropdown-item ml-2" (click)="navigate('/enhet', 'KVA2-3')">KVA-2:3</div>
-          <div class="nav-link dropdown-item ml-2" (click)="navigate('/enhet', 'KVA3-1')">KVA-3:1</div>
-          <div class="nav-link dropdown-item ml-2" (click)="navigate('/enhet', 'KVA3-2')">KVA-3:2</div>
-          <div class="nav-link dropdown-item ml-2" (click)="navigate('/enhet', 'KVA3-3')">KVA-3:3</div>
-          <div class="dropdown-divider mx-2"></div>
-          <div class="nav-link dropdown-item" (click)="navigate('/kontakt')">Kontakt</div>
-          <div class="dropdown-divider mx-2"></div>
-          <div class="nav-link dropdown-item" (click)="signOut()">Logga ut</div>
-        </nav>
-  </div>
+</div>
+<button class="btn btn-lg menu-icon" [ngClass]="{'btn-secondary':!menuHidden}" (click)="toggleMenu()">
+  <span class="fas fa-bars"></span>
+</button>
+
+<div class="sidebar" [ngClass]="{'d-none':menuHidden}">
+  <nav class="nav flex-column">
+    <div class="dropdown-divider mx-2"></div>
+    <div class="nav-link dropdown-item" (click)="navigate('/home')">Till salu</div>
+    <div class="nav-link dropdown-item ml-2" (click)="navigate('/enhet', 'KVA1-1')">KVA-1:1</div>
+    <div class="nav-link dropdown-item ml-2" (click)="navigate('/enhet', 'KVA1-2')">KVA-1:2</div>
+    <div class="nav-link dropdown-item ml-2" (click)="navigate('/enhet', 'KVA1-3')">KVA-1:3</div>
+    <div class="nav-link dropdown-item ml-2" (click)="navigate('/enhet', 'KVA2-1')">KVA-2:1</div>
+    <div class="nav-link dropdown-item ml-2" (click)="navigate('/enhet', 'KVA2-2')">KVA-2:2</div>
+    <div class="nav-link dropdown-item ml-2" (click)="navigate('/enhet', 'KVA2-3')">KVA-2:3</div>
+    <div class="nav-link dropdown-item ml-2" (click)="navigate('/enhet', 'KVA3-1')">KVA-3:1</div>
+    <div class="nav-link dropdown-item ml-2" (click)="navigate('/enhet', 'KVA3-2')">KVA-3:2</div>
+    <div class="nav-link dropdown-item ml-2" (click)="navigate('/enhet', 'KVA3-3')">KVA-3:3</div>
+    <div class="dropdown-divider mx-2"></div>
+    <div class="nav-link dropdown-item" (click)="navigate('/kontakt')">Kontakt</div>
+    <div *ngIf="authProvider.isAuthenticated()">
+      <div class="dropdown-divider mx-2"></div>
+      <div class="nav-link dropdown-item" (click)="signOut()">Logga ut</div>
+    </div>
+  </nav>
+</div>

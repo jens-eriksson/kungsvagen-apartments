@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   }
 
   signOut() {
-    this.authProvider.signOut().then(() => this.router.navigate(["sign-in"]));
+    this.authProvider.signOut().then(() => location.reload());
   }
 
   navigate(path, id?) {

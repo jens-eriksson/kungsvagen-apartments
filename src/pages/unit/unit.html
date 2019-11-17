@@ -3,9 +3,10 @@
   <div class="row">
     <div class="col-md-9">
       <div class="card">
-        <div class="card-body text-center">
+        <div class="card-body">
           <h1 *ngIf="unit.sold" class="sold">SÅLD</h1>
-
+          <h2 class="phosphate mt-2">{{ unit.name }}</h2>
+          <hr>
           <div id="carousel-images" class="carousel" data-interval="false" style="margin: -15px;">
             <div class="carousel-inner">
               <div class="carousel-item" *ngFor="let img of unit.images; let isFirst = first" [class.active]="isFirst">
@@ -24,50 +25,31 @@
         </div>
 
       </div>
-      <div class="card">
+      <div *ngIf="leverasbeskrivning" class="card">
         <div class="card-body">
-          <div *ngFor='let featureCategory of unit.featureCategories'>
-            <h2 class="phosphate mt-3">{{featureCategory.name}}</h2>
-            <hr>
-            <div class="row">
-              <div class="col-md-4" *ngFor='let feature of featureCategory.features'>
-                <h5>{{ feature.name }}</h5>
-                <p>{{ feature.value }}</p>
-              </div>
+          <h2 class="phosphate mt-3">Leveransbeskrivning</h2>
+          <hr>
+          <div class="row">
+            <div class="col-md-4" *ngFor='let feature of leverasbeskrivning'>
+              <h5>{{ feature.name }}</h5>
+              <p>{{ feature.value }}</p>
             </div>
-            <br>
           </div>
+          <br>
         </div>
       </div>
 
     </div>
     <div class="col-md-3">
-      <div class="card">
+      <div *ngIf="faktaruta" class="card">
         <div class="card-body">
-          <h2 class="card-title phosphate mt-2">Faktaruta</h2>
+          <h2 class="phosphate mt-2">Faktaruta</h2>
           <hr>
           <table class="table table-borderless table-sm">
-            <tr>
-              <th>Lägenhet</th>
-              <td>{{ unit.name }}</td>
+            <tr *ngFor="let feature of faktaruta">
+              <th>{{ feature.name }}</th>
+              <td>{{ feature.value }}</td>
             </tr>
-            <tr>
-              <th>Pris</th>
-              <td>{{ unit.price | currency:'SEK':'':'1.0-0' }} kr</td>
-            </tr>
-            <tr>
-              <th>Avgift</th>
-              <td>{{ unit.rent | currency:'SEK':'':'1.0-0' }} kr/mån</td>
-            </tr>
-            <tr>
-              <th>Storlek</th>
-              <td>{{ unit.size }} kvm</td>
-            </tr>
-            <tr>
-              <th>Antal rum</th>
-              <td>{{ unit.rooms }}</td>
-            </tr>
-
           </table>
         </div>
       </div>

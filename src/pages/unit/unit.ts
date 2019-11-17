@@ -13,6 +13,8 @@ declare var $: any;
 export class UnitPage implements OnInit {
   unit;
   salesAgent;
+  leverasbeskrivning;
+  faktaruta;
   
   constructor(
     private route: ActivatedRoute,
@@ -36,9 +38,24 @@ export class UnitPage implements OnInit {
   reload(key) {
     this.unitProvider.getUnit(key).subscribe(unit => {
       this.unit = unit;
+
       this.salesAgentProvider.getSalesAgent(unit.salesAgentKey).subscribe(salesAgent => {
         this.salesAgent = salesAgent;
       });
+
+      if(unit.featureCategories.filter(c => c.name === "Leveransbeskrivning")[0]) {
+        this.leverasbeskrivning = unit.featureCategories.filter(c => c.name === "Leveransbeskrivning")[0].features;
+      }
+      else {
+        this.leverasbeskrivning = null;
+      }
+      if(unit.featureCategories.filter(c => c.name === "Faktaruta")[0]) {
+        this.faktaruta = unit.featureCategories.filter(c => c.name === "Faktaruta")[0].features;
+      }
+      else {
+        this.faktaruta = null;
+      }
+      
     });
   }
 }

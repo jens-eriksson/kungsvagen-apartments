@@ -25,3 +25,8 @@
     min-width: 350px; 
     margin: auto
 }
+
+.description {
+    text-align: justify;
+    text-justify: inter-word;
+}

@@ -43,10 +43,10 @@ import { TokenInterceptor } from '../core/token-interceptor';
     HttpClientModule,
     SocialLoginModule,
     RouterModule.forRoot([
-      { path: 'home', component: ProjectPage, canActivate: [AccessGuardService]},
-      { path: 'sign-in', component: SignInPage},
+      { path: 'home', component: ProjectPage },
+      { path: 'sign-in', component: SignInPage },
       { path: 'kontakt', component: AboutPage },
-      { path: 'enhet/:id', component: UnitPage, canActivate: [AccessGuardService]},
+      { path: 'enhet/:id', component: UnitPage },
       { path: '', redirectTo: 'home', pathMatch: 'full'},
       { path: '**', redirectTo: 'home', pathMatch: 'full'}
     ])
