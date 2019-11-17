@@ -17,17 +17,21 @@ export class AuthProvider {
 
     async signIn(user): Promise<any> {
         let path = "auth/sign-in";
+        let message = "Welcome in";
+
         try {
             this.currentUser = await this.httpClient.post(environment.apiBaseUrl + path, user).toPromise();
         }
         catch(err) {
+            message = err.message;
             if(this.currentUser) {
-                this.currentUser["jwt"] = null;
+                localStorage.removeItem("currentUser");
+                this.currentUser = null;
             }
         }
         
         localStorage.setItem("currentUser", JSON.stringify(this.currentUser));
-        return this.currentUser;
+        return message;
     }
 
     async signOut() {

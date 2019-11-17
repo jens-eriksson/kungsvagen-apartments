@@ -22,18 +22,13 @@ export class SignInPage implements OnInit {
   ngOnInit() {
   }
 
-  signIn() {
-    this.authProvider.signIn({
+  async signIn() {
+    this.message = await this.authProvider.signIn({
       email: this.email,
       pwd: this.pwd
-    }).then(user => {
-      if (this.authProvider.isAuthenticated()) {
-        this.router.navigate([this.redirectTo]);
-      }
-      else {
-        this.authProvider.signOut();
-        this.message = "Sorry. Inloggningen misslyckades.";
-      }
-    });
+    }); 
+    if (this.authProvider.isAuthenticated()) {
+      this.router.navigate([this.redirectTo]);
+    }
   }
 }
