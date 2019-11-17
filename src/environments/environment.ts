@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiBaseUrl: 'http://localhost:1337/' 
+  apiBaseUrl: 'https://kungsvagenapartments.com/api/' //'http://localhost:1337/' 
 };
 
 /*
