@@ -17,7 +17,7 @@ export class AuthProvider {
 
     async signIn(user): Promise<any> {
         let path = "auth/sign-in";
-        let message = "Welcome in";
+        let message = "Welcome";
 
         try {
             this.currentUser = await this.httpClient.post(environment.apiBaseUrl + path, user).toPromise();
