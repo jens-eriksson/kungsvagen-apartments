@@ -24,8 +24,6 @@ import { ProjectProvider } from './../providers/project';
 import { SalesAgentProvider } from './../providers/sales-agent';
 import { TokenInterceptor } from '../core/token-interceptor';
 
-
-
 @NgModule({
   declarations: [
     Industriradhus,
