@@ -8,7 +8,6 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./project.css']
 })
 export class ProjectPage implements OnInit {
-
   project;
   units;
 

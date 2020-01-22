@@ -1,8 +1,10 @@
 <div class="container" style="min-height: 100%;">
   <app-header></app-header>
   <div class="row">
-    <div class="col" *ngFor="let contact of contacts">
-      <div class="card mx-auto mt-5" *ngIf="contact">
+    <div class="col text-center mt-4" *ngFor="let contact of contacts">
+      <h2 class="phosphate" *ngIf="contact.key === 'emma'">Försäljning</h2>
+      <h2 class="phosphate" *ngIf="contact.key === 'jens'">Övriga frågor</h2>
+      <div class="card mx-auto" *ngIf="contact">
         <img class="card-img-top" src="{{ '../assets/img/' + contact.photo.name }}" alt="Kontaktperson">
 
         <div class="card-body" align="center">
