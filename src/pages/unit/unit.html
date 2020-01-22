@@ -21,9 +21,7 @@
             <a class="btn btn-outline-secondary btn-round" href="#carousel-images" role="button" data-slide="next"><span
                 class="fa fa-chevron-right"></span></a>
           </div>
-
         </div>
-
       </div>
       <div *ngIf="leverasbeskrivning" class="card">
         <div class="card-body">
@@ -38,7 +36,19 @@
           <br>
         </div>
       </div>
-
+      <div *ngIf="ekonomi" class="card">
+        <div class="card-body">
+          <h2 class="phosphate mt-3">Ekonomi</h2>
+          <hr>
+          <div class="row">
+            <div class="col-md-4" *ngFor='let feature of ekonomi'>
+              <h5>{{ feature.name }}</h5>
+              <p>{{ feature.value }}</p>
+            </div>
+          </div>
+          <br>
+        </div>
+      </div>
     </div>
     <div class="col-md-3">
       <div *ngIf="faktaruta" class="card">
@@ -58,13 +68,23 @@
         <img class="card-img-top" src="{{ '../assets/img/' + salesAgent.photo.name }}" alt="Kontaktperson">
 
         <div class="card-body" align="center">
-
           <p class="card-text"><b>{{ salesAgent.name }}</b></p>
           <p class="card-text">{{ salesAgent.phone }}</p>
           <p class="card-text"><a href="{{ 'mailto:' + salesAgent.email }}">{{ salesAgent.email | truncate}}</a></p>
         </div>
       </div>
-
+      <div class="card">
+        <div class="card-body">
+          <h2 class="phosphate mt-2">Dokument</h2>
+          <hr>
+          <table class="table table-borderless table-sm">
+            <tr *ngFor="let doc of unit.documents">
+              <td><span class="far fa-file-pdf"></span></td>
+              <td><a href="{{'../../assets/doc/' + doc.doc }}"> {{ doc.name }} </a></td>
+            </tr>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 

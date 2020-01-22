@@ -15,6 +15,7 @@ export class UnitPage implements OnInit {
   salesAgent;
   leverasbeskrivning;
   faktaruta;
+  ekonomi;
   
   constructor(
     private route: ActivatedRoute,
@@ -55,7 +56,13 @@ export class UnitPage implements OnInit {
       else {
         this.faktaruta = null;
       }
-      
+
+      if(unit.featureCategories.filter(c => c.name === "Ekonomi")[0]) {
+        this.ekonomi = unit.featureCategories.filter(c => c.name === "Ekonomi")[0].features;
+      }
+      else {
+        this.ekonomi = null;
+      }
     });
   }
 }
