@@ -44,10 +44,10 @@
       <div class="card max-height text-center unit">
         <h1 *ngIf="unit.sold" class="sold-text mt-3">SÅLD</h1>
         <div [ngClass]="{'sold' : unit.sold}">
-          <img src="{{ '../../assets/img/' + unit.images[0].name }}" [routerLink]="['/enhet', unit.key]"
+          <img src="{{ '../../assets/img/' + unit.images[0].name }}" [routerLink]="['/enhet', unit.id]"
             class="card-img-top" style="border-bottom: solid 1px gainsboro">
           <div class="card-body">
-            <a href="#" [routerLink]="['/enhet', unit.key]">
+            <a href="#" [routerLink]="['/enhet', unit.id]">
               <h3 class="card-title" [innerHTML]="unit.name"></h3>
             </a>
             <h5 class="card-subtitle mb-2 text-muted">{{ unit.rooms }}</h5>
@@ -86,5 +86,5 @@
   </div>
 </div>
 
-<app-image-modal [images]="project.images" [id]="'modal-images-' + project.key" [title]="" *ngIf="project">
+<app-image-modal [images]="project.images" [id]="'modal-images-' + project.id" [title]="" *ngIf="project">
 </app-image-modal>

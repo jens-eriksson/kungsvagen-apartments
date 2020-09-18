@@ -1,5 +1,5 @@
-import { SalesAgentProvider } from './../../providers/sales-agent';
-import { UnitProvider } from './../../providers/unit';
+import { SalesAgentProvider } from './../../providers/salesagent.provider';
+import { UnitProvider } from './../../providers/unit.provider';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
@@ -25,8 +25,6 @@ export class UnitPage implements OnInit {
   ) {
     this.router.events.subscribe(event => {
       if(event instanceof NavigationEnd && event.url.startsWith("/enhet")) {
-        console.log('unit router event');
-        console.log(event);
         this.reload(this.route.snapshot.paramMap.get("id"));
       }
   });
@@ -36,11 +34,11 @@ export class UnitPage implements OnInit {
     this.reload(this.route.snapshot.paramMap.get("id"));
   }
 
-  reload(key) {
-    this.unitProvider.getUnit(key).subscribe(unit => {
+  reload(id) {
+    this.unitProvider.get(id).subscribe(unit => {
       this.unit = unit;
 
-      this.salesAgentProvider.getSalesAgent(unit.salesAgentKey).subscribe(salesAgent => {
+      this.salesAgentProvider.get(unit.salesAgentKey).subscribe(salesAgent => {
         this.salesAgent = salesAgent;
       });
 

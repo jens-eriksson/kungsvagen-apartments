@@ -17,12 +17,14 @@
   <nav class="nav flex-column">
     <div class="dropdown-divider mx-2"></div>
     <div class="nav-link dropdown-item" (click)="navigate('/home')">Till salu</div>
-    <div *ngFor="let unit of units" class="nav-link dropdown-item ml-2" (click)="navigate('/enhet', unit.key)">{{ unit.name }}</div>
+    <div *ngFor="let unit of units" class="nav-link dropdown-item ml-2" (click)="navigate('/enhet', unit.id)">{{ unit.name }}</div>
     <div class="dropdown-divider mx-2"></div>
     <div class="nav-link dropdown-item" (click)="navigate('/kontakt')">Kontakt</div>
+    <div class="dropdown-divider mx-2"></div>
     <div *ngIf="authProvider.isAuthenticated()">
-      <div class="dropdown-divider mx-2"></div>
+      <div class="nav-link dropdown-item" (click)="settings()">Inställningar</div>
       <div class="nav-link dropdown-item" (click)="signOut()">Logga ut</div>
-    </div>
+    </div>    
+    <div *ngIf="!authProvider.isAuthenticated()" class="nav-link dropdown-item" (click)="navigate('/sign-in')">Logga in</div>
   </nav>
 </div>

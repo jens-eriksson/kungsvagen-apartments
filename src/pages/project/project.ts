@@ -1,6 +1,8 @@
-import { ProjectProvider } from './../../providers/project';
-import { Component, OnInit, Input } from '@angular/core';
+import { WhereCondition } from './../../model/where-condition';
+import { ProjectProvider } from './../../providers/project.provider';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { UnitProvider } from 'src/providers/unit.provider';
 
 @Component({
   selector: 'app-project',
@@ -13,18 +15,25 @@ export class ProjectPage implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private projectProvider: ProjectProvider
+    private projectProvider: ProjectProvider,
+    private unitProvider: UnitProvider
   ) {
-
   }
 
   ngOnInit() {
-    let projectKey = "kungsvagen";
-    this.projectProvider.getProject(projectKey).subscribe(project => {
+    let projectId = "kungsvagen";
+    this.projectProvider.get(projectId).subscribe(project => {
       this.project = project;
+      let conditions: WhereCondition[] = [];
+      conditions.push({
+        field: 'projectId',
+        op: '==',
+        value: this.project.id
+      })
+      this.unitProvider.query(conditions, 'name', 'asc').subscribe(units => {
+        this.units = units;
+      });
     });
-    this.projectProvider.getUnits(projectKey).subscribe(units => {
-      this.units = units;
-    });
+    
   }
 }

@@ -1,7 +1,9 @@
+import { SettingsComponent } from './../../pages/settings/settings.component';
+import { ModalPageProvider } from './../../providers/modal-page.provider';
 import { Component, OnInit } from '@angular/core';
-import { AuthProvider } from './../../providers/auth';
+import { AuthenticationProvider } from './../../providers/auth.provider';
 import { Router } from '@angular/router';
-import { UnitProvider } from 'src/providers/unit';
+import { UnitProvider } from './../../providers/unit.provider';
 
 @Component({
   selector: 'app-header',
@@ -13,14 +15,15 @@ export class HeaderComponent implements OnInit {
   units;
 
   constructor(
-    public authProvider: AuthProvider,
+    public authProvider: AuthenticationProvider,
     private router: Router,
-    private unitProvider: UnitProvider
+    private unitProvider: UnitProvider,
+    private modalPageProvider: ModalPageProvider
   ) { 
   }
 
   ngOnInit() {
-    this.unitProvider.getUnits().subscribe(units => {
+    this.unitProvider.all('id', 'asc').subscribe(units => {
       this.units = units;
     });
   }
@@ -38,6 +41,10 @@ export class HeaderComponent implements OnInit {
     }
     
     this.menuHidden = true;
+  }
+
+  settings() {
+    this.modalPageProvider.open(SettingsComponent);
   }
 
   toggleMenu() {

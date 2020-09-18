@@ -1,4 +1,4 @@
-import { SalesAgentProvider } from './../../providers/sales-agent';
+import { SalesAgentProvider } from './../../providers/salesagent.provider';
 import { Component, OnInit } from '@angular/core';
 
 @Component({ 
@@ -12,7 +12,7 @@ export class AboutPage implements OnInit {
   constructor(
     private salesAgentProvider: SalesAgentProvider
   ) { 
-    this.salesAgentProvider.getSalesAgents().subscribe(salesAgents => {
+    this.salesAgentProvider.all('name', 'asc').subscribe(salesAgents => {
       this.contacts = salesAgents;
     });
   }

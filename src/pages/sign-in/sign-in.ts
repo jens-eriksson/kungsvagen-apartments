@@ -1,34 +1,45 @@
-import { AuthProvider } from './../../providers/auth';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationProvider } from '../../providers/auth.provider';
+import { SiteSettingsProvider } from 'src/providers/site-settings.provider';
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.html',
-  styleUrls: ['./sign-in.css']
+  styleUrls: ['./sign-in.scss']
 })
 export class SignInPage implements OnInit {
-  email: string = "";
-  pwd: string = "";
+  email: string;
+  pwd: string;
   message: string;
-  redirectTo: string = "/home";
 
   constructor(
-    private authProvider: AuthProvider,
-    private router: Router
+    private router: Router,
+    private authProvider: AuthenticationProvider,
+    private siteSettingsProvider: SiteSettingsProvider
   ) {
   }
 
   ngOnInit() {
   }
 
-  async signIn() {
-    this.message = await this.authProvider.signIn({
-      email: this.email,
-      pwd: this.pwd
-    }); 
-    if (this.authProvider.isAuthenticated()) {
-      this.router.navigate([this.redirectTo]);
+  signIn() {
+    this.message = '';
+    this.authProvider.signIn(this.email, this.pwd).then(() => {
+      this.router.navigate(['home']);
+    }).catch(err => {
+      console.log(err);
+      this.message = err.message;
+    });
+  }
+
+  navigate(path, id?) {
+    if(id) {
+      this.router.navigate([path, id]);
+    }
+    else {
+      this.router.navigate([path]);
     }
   }
+
 }

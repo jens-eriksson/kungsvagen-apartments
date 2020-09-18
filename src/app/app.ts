@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthProvider } from '../providers/auth';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -8,14 +7,12 @@ import { Subscription } from 'rxjs';
     templateUrl: './app.html',
     styleUrls: ['./app.css']
 })
-export class Industriradhus implements OnInit {
+export class KungsvagenApartments implements OnInit {
     subscription: Subscription;
 
     constructor(
-        private router: Router,
-        private authProvider: AuthProvider
+        private router: Router
     ) {
-        this.authProvider.initilize();
     }
 
     ngOnInit() {

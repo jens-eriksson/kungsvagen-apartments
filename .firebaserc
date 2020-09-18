@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "kungsvagen-apartments"
+  },
+  "targets": {
+    "kungsvagen-apartments": {
+      "hosting": {
+        "industriradhus-webapp": [
+          "kungsvagen-apartments"
+        ]
+      }
+    }
+  }
+}
