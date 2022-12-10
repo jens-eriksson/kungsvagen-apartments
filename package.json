@@ -22,7 +22,7 @@
     "@angular/router": "^6.0.0",
     "@auth0/angular-jwt": "^2.0.0",
     "angularx-social-login": "1.2.3",
-    "express": "^4.16.4",
+    "express": "^4.17.3",
     "rxjs": "6.3.3",
     "rxjs-compat": "6.3.3",
     "zone.js": "^0.8.26"
